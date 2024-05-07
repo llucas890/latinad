@@ -1,0 +1,44 @@
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2>Editar Display</h2>
+      <form>
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" ng-model="display.name">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="description" ng-model="display.description">
+        </div>
+        <div class="mb-3">
+            <label for="price_per_day" class="form-label">Precio por día (USD)</label>
+            <input type="text" class="form-control" id="price_per_day" ng-model="display.price_per_day">
+        </div>
+        <div class="mb-3">
+            <label for="resolution_height" class="form-label">Resolución (alto)</label>
+            <input type="text" class="form-control" id="resolution_height" ng-model="display.resolution_height">
+        </div>
+        <div class="mb-3">
+            <label for="resolution_width" class="form-label">Resolución (ancho)</label>
+            <input type="text" class="form-control" id="resolution_width" ng-model="display.resolution_width">
+        </div>
+        <div class="mb-3">
+            <label for="type" class="form-label">Tipo</label>
+            <select class="form-select" id="type" ng-model="display.type">
+                <option value="indoor">Indoor</option>
+                <option value="outdoor">Outdoor</option>
+            </select>
+        </div>
+        <!-- Otros campos de edición -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          ng-click="updateDisplay()"
+        >
+          Actualizar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

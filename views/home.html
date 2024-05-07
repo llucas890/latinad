@@ -1,0 +1,92 @@
+<!-- home.html -->
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-md-9 ms-auto me-auto">
+            <h2 class="mb-4 text-center">Lista de pantallas en tabla</h2>
+            <form ng-submit="getDisplays()">
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Nombre" ng-model="name">
+                    </div>
+                    <div class="col">
+                        <select class="form-control" ng-model="type">
+                            <option value="">Todos</option>
+                            <option value="indoor">Indoor</option>
+                            <option value="outdoor">Outdoor</option>
+                        </select>
+                    </div>
+                    <div class="col mt-2 d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary" id="boton-buscar">Buscar</button>
+                        <div>
+                            <label>Elementos por página:</label>
+                            <select ng-model="selectedPageSize" class="form-control" ng-change="changePageSize()">
+                                <option ng-repeat="option in pageSizeOptions" ng-value="option">
+                                    {{ option }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <hr />
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped align-content-center">
+                  <thead>
+                    <tr>
+                      <th>Imagen</th>
+                      <th>Nombre</th>
+                      <th>Descripción</th>
+                      <th>Precio por día (USD)</th>
+                      <th>Resolución (alto x ancho)</th>
+                      <th>Tipo</th>
+                      <th>Accion</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      ng-repeat="display in currentPageItems()"
+                    >
+                      <td>
+                        <img
+                          src="{{ display.picture_url }}"
+                          alt=""
+                          class="img-fluid border"
+                          width="100px"
+                          srcset=""
+                        />
+                      </td>
+                      <td>{{ display.name }}</td>
+                      <td>{{ display.description }}</td>
+                      <td>{{ display.price_per_day }}</td>
+                      <td>
+                        {{ display.resolution_height }} x {{ display.resolution_width }}
+                      </td>
+                      <td>{{ display.type }}</td>
+                      <td>
+                        <div class="d-flex">
+                        <a
+                          class="btn btn-primary"
+                          ng-href="#!/editdisplay/{{ display.id }}"
+                          >Editar</a
+                        >
+                        <button
+                          class="btn btn-danger"
+                          ng-click="deleteDisplay(display.id)"
+                          id="boton-eliminar-{{display.id}}"
+                        >
+                          Eliminar
+                        </button>
+                    </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            <div>
+                <button ng-disabled="currentPage === 0" ng-click="currentPage = currentPage - 1" class="btn btn-primary">Anterior</button>
+                <button ng-disabled="currentPage + 1 >= totalPages" ng-click="currentPage = currentPage + 1" class="btn btn-primary">Siguiente</button>
+                <div class="d-flex justify-content-between mt-2">Total de elementos: {{ totalItems }} <div>Total de páginas: {{ totalPages }}</div> <div> Página actual: {{ currentPage + 1 }} </div></div>
+            </div>
+        </div>
+    </div>
+</div>

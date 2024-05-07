@@ -1,0 +1,41 @@
+<!-- new-display.html -->
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2 class="mb-4">Agregar Nueva Pantalla</h2>
+            <form ng-submit="createDisplay()">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" class="form-control" id="name" ng-model="newDisplay.name" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripción:</label>
+                    <input type="text" class="form-control" id="description" ng-model="newDisplay.description" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Precio por día (USD):</label>
+                    <input type="number" class="form-control" id="price" value="0" ng-model="newDisplay.price_per_day" required>
+                </div>
+                <div class="form-group">
+                    <label for="resolutionHeight">Resolución (alto):</label>
+                    <input type="number" class="form-control" id="resolutionHeight" value="0" ng-model="newDisplay.resolution_height" required>
+                </div>
+                <div class="form-group">
+                    <label for="resolutionWidth">Resolución (ancho):</label>
+                    <input type="number" class="form-control" id="resolutionWidth" value="0" ng-model="newDisplay.resolution_width" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Tipo:</label>
+                    <select class="form-control" id="type" ng-model="newDisplay.type" required>
+                        <option value="indoor">Indoor</option>
+                        <option value="outdoor">Outdoor</option>
+                    </select>
+                </div>
+                <div class="mt-3">
+                <button type="submit" class="btn btn-primary" id="crear-pantalla">Crear pantalla</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
