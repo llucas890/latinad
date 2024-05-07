@@ -9,6 +9,7 @@ app.controller('NavbarController', function ($scope, $window, $location, AuthSer
             title: "¿Estas seguro de cerrar sesión?",
             showCancelButton: true,
             confirmButtonText: "Si",
+            cancelButtonText: "Cancelar",
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
